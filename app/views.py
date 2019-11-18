@@ -1,6 +1,6 @@
 from flask import render_template
 from app import app
-from .request import get_news
+from .request import get_news,get_News
 # views
 @app.route('/')
 def index():
@@ -8,7 +8,7 @@ def index():
     view root page function that returns the index page and its data
     '''
     
-    # Getting popular news      
+    # Getting  news      
     trending_news = get_news('general')
     sports_news = get_news('sports')
     business_news = get_news('business')
@@ -26,4 +26,15 @@ def news(news_id):
     view news page function that returns the news highlight page and its data
     '''
     return render_template('news.html',id = news_id)
+
+@app.route('/news/<int:id>')
+def News(id):
+
+    '''
+    View news page function that returns the news details page and its data
+    '''
+    news = get_news(id)
+    title = f'{news.title}'
+
+    return render_template('news.html',title = title,news = news)
     

@@ -9,7 +9,7 @@ Sources = sources.Sources
 
 api_key = app.config['NEWS_API_KEY']
 
-#Getting the movie base url
+#Getting the news base url
 base_url = app.config["NEWS_API_BASE_URL1"]
 
 
@@ -52,7 +52,25 @@ def process_results(news_list):
         category = news_item.get('category')
 
         if desc:
-            news_object = News(source, title, desc, poster, url,category)
+            news_object = News(source, title, desc, poster, url)
             news_results.append(news_object)
 
     return news_results
+
+def get_News(id):
+    get_news_details_url = base_url.format(id,api_key)
+
+    with urllib.request.urlopen(get_news_details_url) as url:
+        news_details_data = url.read()
+        news_details_response = json.loads(news_details_data)
+
+        news_object = None
+        if news_details_response:
+            id = news_details_response.get('id')
+            title = news_details_response.get('title')
+            description = news_details_response.get(' description')
+            poster = news_details_response.get('poster')
+
+            news_object = News(id,title, description,poster,url)
+
+    return news_object
