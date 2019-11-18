@@ -9,6 +9,15 @@
         {% endif %}
     </head>
     <body>
-
+     <!-- Popular movie section  -->
+     <h3>Trending News</h3>
+     <ul>
+        {% for trending_news in trending[:10] %}
+            <h4>{{ trending_news.title}}</h4>
+            <img src="{{trending_news.poster}}" >
+            <p>{{ trending_news.description}}</p>
+            <p>Source: {{trending_news.source_name['name']}}</p>
+        {% endfor %}
+    </ul>
     </body>
 </html>
