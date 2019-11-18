@@ -2,5 +2,6 @@
 {% for news in news_list %}
 <li>{{news.title}}</li>
 <img src="{{news.poster}}">
+<li>{{news.description}}</li>
 {% endfor %}
 {% endmacro %}
