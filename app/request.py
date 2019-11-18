@@ -13,11 +13,11 @@ api_key = app.config['NEWS_API_KEY']
 base_url = app.config["NEWS_API_BASE_URL1"]
 
 
-def get_news():
+def get_news(category):
     '''
     Function that gets the json response to our url request
     '''
-    get_news_url = base_url.format(api_key)
+    get_news_url = base_url.format(category, api_key)
 
     with urllib.request.urlopen(get_news_url) as url:
         get_news_data = url.read()
@@ -49,9 +49,10 @@ def process_results(news_list):
         desc = news_item.get('description')
         poster = news_item.get('urlToImage')
         url = news_item.get('url')
+        category = news_item.get('category')
 
         if desc:
-            news_object = News(source, title, desc, poster, url)
+            news_object = News(source, title, desc, poster, url,category)
             news_results.append(news_object)
 
     return news_results
