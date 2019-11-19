@@ -1,6 +1,15 @@
 {% extends 'base.html'%}
 {% import 'macros.html' as macro%}
 
+
+
+<!-- Styles block -->
+
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
+<!-- Content block -->
  {% block content %}
           <!-- Popular movie -->
           <h3> Trending News</h3>
@@ -8,20 +17,20 @@
 
               {{ macro.displayNewsList(trending)}}
            
-          <h3> Sports </h3>
+          <h2> Sports </h2>
           
               {{ macro.displayNewsList(sports)}}
           
 
-           <h3>Business</h3>
+           <h6>Business</h6>
           
 
               {{ macro.displayNewsList(business)}}
           
-              <h3>Entertainment</h3>
+              <h5>Entertainment</h5>
               {{ macro.displayNewsList(entertainment)}}
 
-              <h3>Technology</h3>
+              <h1>Technology</h1>
               {{ macro.displayNewsList(technology)}}
 
 {% endblock%}

@@ -73,4 +73,4 @@ def get_News(id):
 
             news_object = News(id,title, description,poster,url)
 
-    return news_object
+    return News_object
