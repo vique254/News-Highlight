@@ -5,18 +5,36 @@
 <li>{{news.description}}</li>
 {% endfor %}
 {% endmacro %} -->
- {% macro displayNewsList(news_list) %}
+{% macro displayNewsList(news_list) %}
+<!-- <div class="card" style="width: 18rem;">
+    {% for news in news_list %}
+    <img class="card-img-top" src="{{ news.poster }}" alt="{{ news.title }} poster">
+    <div class="card-body">
+        <h5 class="card-title">{{news.id}}</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+        <a href="{{news.url}}" class="btn btn-primary">MORE DETAILS</a>
+    </div>
+    {% endfor %}
+</div> --> 
+
+
+<div class="container">
+
 
     {% for news in news_list %}
-        <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 news-card">
-            <img src="{{ news.poster }}" alt="{{ news.title }} poster" class="img-responsive">
-            <li class="text-center">
-                <a href="/news/{{news.id}}">{{ news.title|truncate(10)}}</a>
-                    {{news.description}} 
-                    <a href="/news {{news_id}}"></a> 
-             </li>
-        </div>
+    <div class="col-md-2">
+        <img src="{{ news.poster }}" alt="{{ news.title }} poster" class="img-responsive">
+        <li class="text-center">
+            <a href="{{news.id}}">{{ news.title|truncate(10)}}</a>
 
+            <a class="btn btn-default" href="{{news.url}}">READ MORE</a>
+        </li>
+
+    </div>
     {% endfor %}
 
-{% endmacro %} 
+</div>
+
+
+{% endmacro %}

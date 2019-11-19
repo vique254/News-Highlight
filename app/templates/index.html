@@ -13,25 +13,23 @@
  {% block content %}
           <!-- Popular movie -->
           <h3> Trending News</h3>
+       
           
-
               {{ macro.displayNewsList(trending)}}
-           
-          <h2> Sports </h2>
-          
+        
+          <h3> Sports </h3>
               {{ macro.displayNewsList(sports)}}
-          
-
-           <h6>Business</h6>
-          
+          <h3>Business</h3>
 
               {{ macro.displayNewsList(business)}}
           
-              <h5>Entertainment</h5>
-              {{ macro.displayNewsList(entertainment)}}
-
-              <h1>Technology</h1>
-              {{ macro.displayNewsList(technology)}}
+          <h3>Entertainment</h3>
+            {{ macro.displayNewsList(entertainment)}}
+          
+        
+          <h3>Technology</h3>
+            {{ macro.displayNewsList(technology)}}
+        
 
 {% endblock%}
   
